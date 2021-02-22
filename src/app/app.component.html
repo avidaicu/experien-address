@@ -1,0 +1,50 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+    <h1>Experien Address Lookup</h1>
+
+    <select class="form-control" (change)="changeCountry($event.target.value)" formControlName="countryName">
+        <option value="">Choose a country</option>
+        <option *ngFor="let country of Country" [value]="country.country_iso">{{country.name}}</option>
+    </select>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Address lookup</mat-label>
+        <input type="text"
+                placeholder="Address Lookup"
+                aria-label="Address lookup"
+                matInput
+                formControlName="addressLookup"
+                [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let address of filteredOptions | async" [value]="address">
+                {{address}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- <input type = "text" name = "addressLookup" placeholder = "Address Lookup" formControlName="addressLine1" > -->
+    <br/>
+    
+  <!-- <input class="form-control" type="text" name = "addressLine1" placeholder = "Address Line 1" formControlName="addressLine1" >
+  <br/>
+  
+  <input class="form-control" type="text" name = "addressLine2" placeholder = "Address Line 2" formControlName="addressLine1" >
+  <br/>
+  
+  <input class="form-control" type="text" name = "addressLine3" placeholder = "Address Line 3" formControlName="addressLine1" >
+  <br/>
+
+  <input class="form-control" type="text" name = "city" placeholder = "City" formControlName="city" >
+  <br/>
+
+  <input class="form-control" type="text" name = "state" placeholder = "State" formControlName="state" >
+  <br/>
+
+  <input class="form-control" type="text" name = "postcode" placeholder = "Postcode" formControlName="postcode" >
+  <br/>
+
+  <input class="form-control" type="text" name = "country" placeholder = "Country" formControlName="country" >
+  <br/>
+  <input type = "submit" value = "Send"> -->
+</form>
+
